@@ -13,7 +13,8 @@
 #include "task.h"
 #include "queue.h"
 
-
+extern TaskHandle_t task1;
+extern TaskHandle_t task2;
 
 
 
@@ -23,9 +24,8 @@ void vApplicationIdleHook(void);
 // task prototypes
 void task_100ms(void *param);
 void task_200ms(void *param);
-
-
-
+void vTaskFunction(void *pvParameters);
+void vPrintString(const char *pcString);
 
 
 #endif /* INC_MY_APPTASK_H_ */

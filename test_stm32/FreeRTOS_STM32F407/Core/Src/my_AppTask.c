@@ -15,12 +15,14 @@
 
 
 
-const TickType_t xPeriod_100 = pdMS_TO_TICKS(50);
-const TickType_t xPeriod_200 = pdMS_TO_TICKS(30);
+const TickType_t xPeriod_100 = pdMS_TO_TICKS(100);
+const TickType_t xPeriod_200 = pdMS_TO_TICKS(200);
 
 
 uint8_t button_status_flag = NOT_PRESSED;
 
+TaskHandle_t task1;
+TaskHandle_t task2;
 
 
 
@@ -55,6 +57,7 @@ void task_100ms(void *param){
 
 
 
+
 void task_200ms(void *param){
     TickType_t xLastWakeTime;
 
@@ -77,4 +80,27 @@ void task_200ms(void *param){
 }
 
 
+void vTaskFunction(void *pvParameters){
+	char *pcTaskName;
+	const TickType_t xDelay = xTaskGetTickCount();
 
+	pcTaskName = (char*)pvParameters;
+
+	while (1){
+		vPrintString(pcTaskName);
+		vTaskDelayUntil(&xDelay, pdMS_TO_TICKS(250));
+	}
+}
+
+
+void vPrintString(const char *pcString){
+/* Write the string to stdout, suspending the scheduler as a method of mutual
+exclusion. */
+	//vTaskSuspendScheduler();
+		{
+
+			//printf( "%s", pcString );
+			//fflush( stdout );
+		}
+	//xTaskResumeScheduler();
+}

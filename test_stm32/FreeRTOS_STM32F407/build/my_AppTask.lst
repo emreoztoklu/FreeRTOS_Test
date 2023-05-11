@@ -1,0 +1,334 @@
+ARM GAS  C:\Users\arge12\AppData\Local\Temp\ccygoWkQ.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"my_AppTask.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.file 1 "Core/Src/my_AppTask.c"
+  20              		.section	.text.vApplicationIdleHook,"ax",%progbits
+  21              		.align	1
+  22              		.global	vApplicationIdleHook
+  23              		.syntax unified
+  24              		.thumb
+  25              		.thumb_func
+  27              	vApplicationIdleHook:
+  28              	.LFB135:
+   1:Core/Src/my_AppTask.c **** /*
+   2:Core/Src/my_AppTask.c ****  * my_AppTask.c
+   3:Core/Src/my_AppTask.c ****  *
+   4:Core/Src/my_AppTask.c ****  *  Created on: Feb 7, 2023
+   5:Core/Src/my_AppTask.c ****  *      Author: arge12
+   6:Core/Src/my_AppTask.c ****  */
+   7:Core/Src/my_AppTask.c **** 
+   8:Core/Src/my_AppTask.c **** 
+   9:Core/Src/my_AppTask.c **** #include "my_AppTask.h"
+  10:Core/Src/my_AppTask.c **** 
+  11:Core/Src/my_AppTask.c **** #define FALSE (1 == 0)
+  12:Core/Src/my_AppTask.c **** #define TRUE  (1 == 1)
+  13:Core/Src/my_AppTask.c **** #define NOT_PRESSED FALSE
+  14:Core/Src/my_AppTask.c **** #define PRESSED TRUE
+  15:Core/Src/my_AppTask.c **** 
+  16:Core/Src/my_AppTask.c **** 
+  17:Core/Src/my_AppTask.c **** 
+  18:Core/Src/my_AppTask.c **** const TickType_t xPeriod_100 = pdMS_TO_TICKS(50);
+  19:Core/Src/my_AppTask.c **** const TickType_t xPeriod_200 = pdMS_TO_TICKS(30);
+  20:Core/Src/my_AppTask.c **** 
+  21:Core/Src/my_AppTask.c **** 
+  22:Core/Src/my_AppTask.c **** uint8_t button_status_flag = NOT_PRESSED;
+  23:Core/Src/my_AppTask.c **** 
+  24:Core/Src/my_AppTask.c **** 
+  25:Core/Src/my_AppTask.c **** 
+  26:Core/Src/my_AppTask.c **** 
+  27:Core/Src/my_AppTask.c **** void vApplicationIdleHook(void){
+  29              		.loc 1 27 32 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  C:\Users\arge12\AppData\Local\Temp\ccygoWkQ.s 			page 2
+
+
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		@ link register save eliminated.
+  28:Core/Src/my_AppTask.c ****     // send CPU to normal sleep by using CMSIS macro
+  29:Core/Src/my_AppTask.c ****     __WFI();
+  34              		.loc 1 29 5 view .LVU1
+  35              		.syntax unified
+  36              	@ 29 "Core/Src/my_AppTask.c" 1
+  37 0000 30BF     		wfi
+  38              	@ 0 "" 2
+  30:Core/Src/my_AppTask.c **** }
+  39              		.loc 1 30 1 is_stmt 0 view .LVU2
+  40              		.thumb
+  41              		.syntax unified
+  42 0002 7047     		bx	lr
+  43              		.cfi_endproc
+  44              	.LFE135:
+  46              		.section	.text.task_100ms,"ax",%progbits
+  47              		.align	1
+  48              		.global	task_100ms
+  49              		.syntax unified
+  50              		.thumb
+  51              		.thumb_func
+  53              	task_100ms:
+  54              	.LVL0:
+  55              	.LFB136:
+  31:Core/Src/my_AppTask.c **** 
+  32:Core/Src/my_AppTask.c **** 
+  33:Core/Src/my_AppTask.c **** void task_100ms(void *param){
+  56              		.loc 1 33 29 is_stmt 1 view -0
+  57              		.cfi_startproc
+  58              		@ Volatile: function does not return.
+  59              		@ args = 0, pretend = 0, frame = 8
+  60              		@ frame_needed = 0, uses_anonymous_args = 0
+  61              		.loc 1 33 29 is_stmt 0 view .LVU4
+  62 0000 00B5     		push	{lr}
+  63              	.LCFI0:
+  64              		.cfi_def_cfa_offset 4
+  65              		.cfi_offset 14, -4
+  66 0002 83B0     		sub	sp, sp, #12
+  67              	.LCFI1:
+  68              		.cfi_def_cfa_offset 16
+  34:Core/Src/my_AppTask.c ****     TickType_t xLastWakeTime;
+  69              		.loc 1 34 5 is_stmt 1 view .LVU5
+  35:Core/Src/my_AppTask.c **** 
+  36:Core/Src/my_AppTask.c ****     /* Init the xLastWakeTime variable with the current time */
+  37:Core/Src/my_AppTask.c ****     xLastWakeTime = xTaskGetTickCount();
+  70              		.loc 1 37 5 view .LVU6
+  71              		.loc 1 37 21 is_stmt 0 view .LVU7
+  72 0004 FFF7FEFF 		bl	xTaskGetTickCount
+  73              	.LVL1:
+  74              		.loc 1 37 19 view .LVU8
+  75 0008 0190     		str	r0, [sp, #4]
+  76 000a 06E0     		b	.L5
+  77              	.L7:
+  38:Core/Src/my_AppTask.c **** 
+  39:Core/Src/my_AppTask.c ****     while(1){
+  40:Core/Src/my_AppTask.c ****         if(HAL_GPIO_ReadPin(B1_GPIO_Port, B1_Pin) == FALSE){
+ARM GAS  C:\Users\arge12\AppData\Local\Temp\ccygoWkQ.s 			page 3
+
+
+  41:Core/Src/my_AppTask.c ****             // If button state is 1 then we consider not pressed
+  42:Core/Src/my_AppTask.c ****             button_status_flag = NOT_PRESSED;
+  78              		.loc 1 42 13 is_stmt 1 view .LVU9
+  79              		.loc 1 42 32 is_stmt 0 view .LVU10
+  80 000c 084B     		ldr	r3, .L8
+  81 000e 0022     		movs	r2, #0
+  82 0010 1A70     		strb	r2, [r3]
+  83              	.L4:
+  43:Core/Src/my_AppTask.c ****         }
+  44:Core/Src/my_AppTask.c ****         else{
+  45:Core/Src/my_AppTask.c ****             // When button is pressed the state of button will be 0
+  46:Core/Src/my_AppTask.c ****             button_status_flag = PRESSED;
+  47:Core/Src/my_AppTask.c ****         }
+  48:Core/Src/my_AppTask.c **** 
+  49:Core/Src/my_AppTask.c ****       //  HAL_Delay(50);
+  50:Core/Src/my_AppTask.c **** 
+  51:Core/Src/my_AppTask.c ****         //vTaskDelay(pdMS_TO_TICKS(200));
+  52:Core/Src/my_AppTask.c ****         vTaskDelayUntil(&xLastWakeTime, xPeriod_100);
+  84              		.loc 1 52 9 is_stmt 1 view .LVU11
+  85              		.loc 1 52 9 view .LVU12
+  86 0012 3221     		movs	r1, #50
+  87 0014 01A8     		add	r0, sp, #4
+  88 0016 FFF7FEFF 		bl	xTaskDelayUntil
+  89              	.LVL2:
+  90              		.loc 1 52 9 view .LVU13
+  39:Core/Src/my_AppTask.c ****         if(HAL_GPIO_ReadPin(B1_GPIO_Port, B1_Pin) == FALSE){
+  91              		.loc 1 39 10 view .LVU14
+  92              	.L5:
+  39:Core/Src/my_AppTask.c ****         if(HAL_GPIO_ReadPin(B1_GPIO_Port, B1_Pin) == FALSE){
+  93              		.loc 1 39 5 view .LVU15
+  40:Core/Src/my_AppTask.c ****             // If button state is 1 then we consider not pressed
+  94              		.loc 1 40 9 view .LVU16
+  40:Core/Src/my_AppTask.c ****             // If button state is 1 then we consider not pressed
+  95              		.loc 1 40 12 is_stmt 0 view .LVU17
+  96 001a 0121     		movs	r1, #1
+  97 001c 0548     		ldr	r0, .L8+4
+  98 001e FFF7FEFF 		bl	HAL_GPIO_ReadPin
+  99              	.LVL3:
+  40:Core/Src/my_AppTask.c ****             // If button state is 1 then we consider not pressed
+ 100              		.loc 1 40 11 view .LVU18
+ 101 0022 0028     		cmp	r0, #0
+ 102 0024 F2D0     		beq	.L7
+  46:Core/Src/my_AppTask.c ****         }
+ 103              		.loc 1 46 13 is_stmt 1 view .LVU19
+  46:Core/Src/my_AppTask.c ****         }
+ 104              		.loc 1 46 32 is_stmt 0 view .LVU20
+ 105 0026 024B     		ldr	r3, .L8
+ 106 0028 0122     		movs	r2, #1
+ 107 002a 1A70     		strb	r2, [r3]
+ 108 002c F1E7     		b	.L4
+ 109              	.L9:
+ 110 002e 00BF     		.align	2
+ 111              	.L8:
+ 112 0030 00000000 		.word	button_status_flag
+ 113 0034 00000240 		.word	1073872896
+ 114              		.cfi_endproc
+ 115              	.LFE136:
+ARM GAS  C:\Users\arge12\AppData\Local\Temp\ccygoWkQ.s 			page 4
+
+
+ 117              		.section	.text.task_200ms,"ax",%progbits
+ 118              		.align	1
+ 119              		.global	task_200ms
+ 120              		.syntax unified
+ 121              		.thumb
+ 122              		.thumb_func
+ 124              	task_200ms:
+ 125              	.LVL4:
+ 126              	.LFB137:
+  53:Core/Src/my_AppTask.c ****     }
+  54:Core/Src/my_AppTask.c **** }
+  55:Core/Src/my_AppTask.c **** 
+  56:Core/Src/my_AppTask.c **** 
+  57:Core/Src/my_AppTask.c **** 
+  58:Core/Src/my_AppTask.c **** void task_200ms(void *param){
+ 127              		.loc 1 58 29 is_stmt 1 view -0
+ 128              		.cfi_startproc
+ 129              		@ Volatile: function does not return.
+ 130              		@ args = 0, pretend = 0, frame = 8
+ 131              		@ frame_needed = 0, uses_anonymous_args = 0
+ 132              		.loc 1 58 29 is_stmt 0 view .LVU22
+ 133 0000 00B5     		push	{lr}
+ 134              	.LCFI2:
+ 135              		.cfi_def_cfa_offset 4
+ 136              		.cfi_offset 14, -4
+ 137 0002 83B0     		sub	sp, sp, #12
+ 138              	.LCFI3:
+ 139              		.cfi_def_cfa_offset 16
+  59:Core/Src/my_AppTask.c ****     TickType_t xLastWakeTime;
+ 140              		.loc 1 59 5 is_stmt 1 view .LVU23
+  60:Core/Src/my_AppTask.c **** 
+  61:Core/Src/my_AppTask.c ****     /* Init the xLastWakeTime variable with the current time */
+  62:Core/Src/my_AppTask.c ****     xLastWakeTime = xTaskGetTickCount();
+ 141              		.loc 1 62 5 view .LVU24
+ 142              		.loc 1 62 21 is_stmt 0 view .LVU25
+ 143 0004 FFF7FEFF 		bl	xTaskGetTickCount
+ 144              	.LVL5:
+ 145              		.loc 1 62 19 view .LVU26
+ 146 0008 0190     		str	r0, [sp, #4]
+ 147 000a 09E0     		b	.L13
+ 148              	.L15:
+  63:Core/Src/my_AppTask.c **** 
+  64:Core/Src/my_AppTask.c ****     while(1) {
+  65:Core/Src/my_AppTask.c ****         if(button_status_flag == PRESSED) {
+  66:Core/Src/my_AppTask.c ****             // Turn ON the LED
+  67:Core/Src/my_AppTask.c ****             HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin|LD4_Pin|LD5_Pin|LD6_Pin, GPIO_PIN_SET);
+ 149              		.loc 1 67 13 is_stmt 1 view .LVU27
+ 150 000c 0122     		movs	r2, #1
+ 151 000e 4FF47041 		mov	r1, #61440
+ 152 0012 0948     		ldr	r0, .L16
+ 153 0014 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 154              	.LVL6:
+ 155              	.L12:
+  68:Core/Src/my_AppTask.c ****         }
+  69:Core/Src/my_AppTask.c ****         else {
+  70:Core/Src/my_AppTask.c ****             // Turn OFF the LED
+  71:Core/Src/my_AppTask.c ****             HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin|LD4_Pin|LD5_Pin|LD6_Pin , GPIO_PIN_RESET);
+ARM GAS  C:\Users\arge12\AppData\Local\Temp\ccygoWkQ.s 			page 5
+
+
+  72:Core/Src/my_AppTask.c ****         }
+  73:Core/Src/my_AppTask.c **** 
+  74:Core/Src/my_AppTask.c ****         //vTaskDelay(pdMS_TO_TICKS(100));
+  75:Core/Src/my_AppTask.c ****         vTaskDelayUntil(&xLastWakeTime, xPeriod_200);
+ 156              		.loc 1 75 9 view .LVU28
+ 157              		.loc 1 75 9 view .LVU29
+ 158 0018 1E21     		movs	r1, #30
+ 159 001a 01A8     		add	r0, sp, #4
+ 160 001c FFF7FEFF 		bl	xTaskDelayUntil
+ 161              	.LVL7:
+ 162              		.loc 1 75 9 view .LVU30
+  64:Core/Src/my_AppTask.c ****         if(button_status_flag == PRESSED) {
+ 163              		.loc 1 64 10 view .LVU31
+ 164              	.L13:
+  64:Core/Src/my_AppTask.c ****         if(button_status_flag == PRESSED) {
+ 165              		.loc 1 64 5 view .LVU32
+  65:Core/Src/my_AppTask.c ****             // Turn ON the LED
+ 166              		.loc 1 65 9 view .LVU33
+  65:Core/Src/my_AppTask.c ****             // Turn ON the LED
+ 167              		.loc 1 65 31 is_stmt 0 view .LVU34
+ 168 0020 064B     		ldr	r3, .L16+4
+ 169 0022 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  65:Core/Src/my_AppTask.c ****             // Turn ON the LED
+ 170              		.loc 1 65 11 view .LVU35
+ 171 0024 012B     		cmp	r3, #1
+ 172 0026 F1D0     		beq	.L15
+  71:Core/Src/my_AppTask.c ****         }
+ 173              		.loc 1 71 13 is_stmt 1 view .LVU36
+ 174 0028 0022     		movs	r2, #0
+ 175 002a 4FF47041 		mov	r1, #61440
+ 176 002e 0248     		ldr	r0, .L16
+ 177 0030 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 178              	.LVL8:
+ 179 0034 F0E7     		b	.L12
+ 180              	.L17:
+ 181 0036 00BF     		.align	2
+ 182              	.L16:
+ 183 0038 000C0240 		.word	1073875968
+ 184 003c 00000000 		.word	button_status_flag
+ 185              		.cfi_endproc
+ 186              	.LFE137:
+ 188              		.global	button_status_flag
+ 189              		.section	.bss.button_status_flag,"aw",%nobits
+ 192              	button_status_flag:
+ 193 0000 00       		.space	1
+ 194              		.global	xPeriod_200
+ 195              		.section	.rodata.xPeriod_200,"a"
+ 196              		.align	2
+ 199              	xPeriod_200:
+ 200 0000 1E000000 		.word	30
+ 201              		.global	xPeriod_100
+ 202              		.section	.rodata.xPeriod_100,"a"
+ 203              		.align	2
+ 206              	xPeriod_100:
+ 207 0000 32000000 		.word	50
+ 208              		.text
+ 209              	.Letext0:
+ARM GAS  C:\Users\arge12\AppData\Local\Temp\ccygoWkQ.s 			page 6
+
+
+ 210              		.file 2 "c:\\dev\\tools\\arm-gnu-toolchain\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 211              		.file 3 "c:\\dev\\tools\\arm-gnu-toolchain\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 212              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+ 213              		.file 5 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
+ 214              		.file 6 "FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h"
+ 215              		.file 7 "FreeRTOS/Source/include/task.h"
+ARM GAS  C:\Users\arge12\AppData\Local\Temp\ccygoWkQ.s 			page 7
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 my_AppTask.c
+C:\Users\arge12\AppData\Local\Temp\ccygoWkQ.s:21     .text.vApplicationIdleHook:00000000 $t
+C:\Users\arge12\AppData\Local\Temp\ccygoWkQ.s:27     .text.vApplicationIdleHook:00000000 vApplicationIdleHook
+C:\Users\arge12\AppData\Local\Temp\ccygoWkQ.s:47     .text.task_100ms:00000000 $t
+C:\Users\arge12\AppData\Local\Temp\ccygoWkQ.s:53     .text.task_100ms:00000000 task_100ms
+C:\Users\arge12\AppData\Local\Temp\ccygoWkQ.s:112    .text.task_100ms:00000030 $d
+C:\Users\arge12\AppData\Local\Temp\ccygoWkQ.s:192    .bss.button_status_flag:00000000 button_status_flag
+C:\Users\arge12\AppData\Local\Temp\ccygoWkQ.s:118    .text.task_200ms:00000000 $t
+C:\Users\arge12\AppData\Local\Temp\ccygoWkQ.s:124    .text.task_200ms:00000000 task_200ms
+C:\Users\arge12\AppData\Local\Temp\ccygoWkQ.s:183    .text.task_200ms:00000038 $d
+C:\Users\arge12\AppData\Local\Temp\ccygoWkQ.s:193    .bss.button_status_flag:00000000 $d
+C:\Users\arge12\AppData\Local\Temp\ccygoWkQ.s:199    .rodata.xPeriod_200:00000000 xPeriod_200
+C:\Users\arge12\AppData\Local\Temp\ccygoWkQ.s:196    .rodata.xPeriod_200:00000000 $d
+C:\Users\arge12\AppData\Local\Temp\ccygoWkQ.s:206    .rodata.xPeriod_100:00000000 xPeriod_100
+C:\Users\arge12\AppData\Local\Temp\ccygoWkQ.s:203    .rodata.xPeriod_100:00000000 $d
+
+UNDEFINED SYMBOLS
+xTaskGetTickCount
+xTaskDelayUntil
+HAL_GPIO_ReadPin
+HAL_GPIO_WritePin

@@ -87,12 +87,13 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
-  xTaskCreate(task_100ms, "100MS_TASK", configMINIMAL_STACK_SIZE, NULL, 1, NULL);
-  xTaskCreate(task_200ms, "200MS_TASK", configMINIMAL_STACK_SIZE, NULL, 3, NULL);
+  xTaskCreate(task_100ms, "100MS_TASK", configMINIMAL_STACK_SIZE, NULL, 1, &task1);
+  xTaskCreate(task_200ms, "200MS_TASK", configMINIMAL_STACK_SIZE, NULL, 3, &task2);
 
   /* Start the scheduler */
   vTaskStartScheduler();
   /* USER CODE END 2 */
+
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
